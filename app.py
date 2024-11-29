@@ -36,5 +36,20 @@ def add():
     return render_template('add.html')
 
 
+@app.route('/delete/<post_id>', methods=['POST'])
+def delete(post_id):
+    with open("data_storage.json", "r") as file:
+        posts = json.load(file)
+        
+    for post in posts:
+        if post['postid'] == post_id:
+            posts.remove(post)  # Remove the post from the list
+    
+    with open("data_storage.json", "w") as file:
+        json.dump(posts, file, indent=4)
+
+    return redirect(url_for('index'))
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
