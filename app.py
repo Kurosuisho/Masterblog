@@ -78,5 +78,21 @@ def update(post_id):
     return render_template('update.html', post=post)
 
 
+@app.route('/like/<post_id>', methods=['POST'])
+def like(post_id):
+    with open("data_storage.json", "r") as file:
+        posts = json.load(file)
+    
+    for post in posts:
+        if post['postid'] == post_id:
+            post['likes'] += 1
+            break
+    
+    with open("data_storage.json", "w") as file:
+        json.dump(posts, file, indent=4)
+    
+    return redirect(url_for('index'))
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)

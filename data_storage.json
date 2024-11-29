@@ -3,6 +3,7 @@
         "postid": "6f1300cb-35e4-4d3a-b71b-ae7ffccd44e9",
         "author": "Jane Doe",
         "title": "Test the Second",
-        "content": "Test?"
+        "content": "Test?",
+        "likes": 0
     }
 ]

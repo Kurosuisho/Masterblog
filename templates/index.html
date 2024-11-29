@@ -24,6 +24,11 @@
         <form action="/update/{{ post.postid }}" method="GET">
             <button type="submit">Update</button>
         </form>
+
+        <p>Likes: {{ post.likes }}</p>
+        <form action="/like/{{ post.postid }}" method="POST">
+            <button type="submit">Like</button>
+        </form>
     </div>
     {% endfor %}
 </body>
